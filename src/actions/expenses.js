@@ -17,11 +17,13 @@ export const startAddExpense = (expenseData = {}) => {
             createdAt = 0
         } = expenseData; // destrucured the expenseData into 4 properties!
         const expense = { description, note, amount, createdAt };
+        console.log('outer!!!');
         return database.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id: ref.key,
                 ...expense
             }));
+            console.log('inner!!!');
         });
     };
 };
