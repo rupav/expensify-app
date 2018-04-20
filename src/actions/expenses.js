@@ -17,13 +17,13 @@ export const startAddExpense = (expenseData = {}) => {
             createdAt = 0
         } = expenseData; // destrucured the expenseData into 4 properties!
         const expense = { description, note, amount, createdAt };
-        console.log('outer!!!');
+        // console.log('outer!!!');
         return database.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id: ref.key,
                 ...expense
             }));
-            console.log('inner!!!');
+            // console.log('inner!!!');
         });
     };
 };
@@ -41,3 +41,24 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses')
+            .once('value')
+            .then((snapshot) => {
+                const expenses = [];
+                snapshot.forEach((childSnapshot) => {
+                    expenses.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+                dispatch(setExpenses(expenses));
+            });
+    };
+};
