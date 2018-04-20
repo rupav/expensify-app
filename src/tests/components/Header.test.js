@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 // import ReactShallowRenderer from 'react-test-renderer/shallow';
 import Header from '../../components/Header';
 
-test('should render Heeader correctly', () => {
+test('should render Header correctly', () => {
     const wrapper = shallow(<Header />);
     expect(wrapper).toMatchSnapshot();
     // expect(wrapper.find('h1').text()).toBe('Expensify');

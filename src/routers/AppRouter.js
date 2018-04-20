@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import HelpPage from '../components/HelpPage';
+import LoginPage from '../components/LoginPage';
 import NotFoundPage from '../components/NotFoundPage';
 
 const AppRouter = () => (
@@ -12,7 +13,8 @@ const AppRouter = () => (
         <div>
             <Header />
             <Switch> {/* Stops looking when a match! */}
-                <Route path="/" component={ExpenseDashboardPage} exact />
+                <Route path="/" component={LoginPage} exact />
+                <Route path="/dashboard" component={ExpenseDashboardPage} exact />
                 <Route path="/create" exact component={AddExpensePage} />
                 <Route path="/edit/:id" exact component={EditExpensePage} />
                 <Route path="/help" exact component={HelpPage} />
