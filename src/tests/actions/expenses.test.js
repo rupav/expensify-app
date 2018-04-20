@@ -78,7 +78,7 @@ test('should add expense with defaults to database and store', (done) => {
         expect(actions[0]).toEqual({
             type: 'ADD_EXPENSE',
             expense: {
-                id: expenses.any(String),
+                id: expect.any(String),
                 ...defaultExpense
             }
         });

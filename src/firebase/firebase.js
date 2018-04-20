@@ -9,7 +9,17 @@ const config = {
     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
 };
 
-console.log('hello', config);
+const config_test = {
+    apiKey: "AIzaSyDQKYW_H4Gb5A6BrSwLwvSNb1JBHDISNNs",
+    authDomain: "rupav-expensify-test.firebaseapp.com",
+    databaseURL: "https://rupav-expensify-test.firebaseio.com",
+    projectId: "rupav-expensify-test",
+    storageBucket: "rupav-expensify-test.appspot.com",
+    messagingSenderId: "172505097356"
+};
+
+
+// console.log('hello', config);
 firebase.initializeApp(config);
 
 const database = firebase.database();
