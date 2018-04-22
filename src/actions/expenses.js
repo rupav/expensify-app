@@ -57,6 +57,16 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+// startEditExpense
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        // below return statement is for returning a promise chin, can be used in testing.
+        return database.ref(`expenses/${id}`).update({ ...updates }).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
+
 export const setExpenses = (expenses) => ({
     type: 'SET_EXPENSES',
     expenses
